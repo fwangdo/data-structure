@@ -5,18 +5,20 @@ class MergeSort {
     }
 
     merge(st, en, mid) {
-        const left = this.data.slice(st, mid+1);
-        const right = this.data.slice(mid+1, en+1)
-        let lidx = 0; 
-        let ridx = 0; 
-        let curIdx = st; 
+        const temp = {}; 
+        let lidx = st; 
+        let ridx = mid + 1; 
         
-        while (lidx < left.length || ridx < right.length) {
+       for (let idx = st; idx <= en; idx++) {
             // console.log(this.data, left, right, lidx, ridx)
-            if (lidx === left.length) this.data[curIdx++] = right[ridx++]; 
-            else if (ridx === right.length) this.data[curIdx++] = left[lidx++]; 
-            else if (left[lidx] <= right[ridx]) this.data[curIdx++] = left[lidx++]; 
-            else this.data[curIdx++] = right[ridx++];
+            if (lidx === mid + 1) temp[idx] = this.data[ridx++]; 
+            else if (ridx === en + 1) temp[idx] = this.data[lidx++]; 
+            else if (this.data[lidx] <= this.data[ridx]) temp[idx] = this.data[lidx++]; 
+            else temp[idx] = this.data[ridx++];
+        }
+
+        for (const [idx, value] of Object.entries(temp)) {
+            this.data[Number(idx)] = value; 
         }
     }
 
