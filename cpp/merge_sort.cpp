@@ -1,6 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+// TODO: use only one temp vector. 
 class MergeSort {
 
 public:
